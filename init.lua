@@ -132,22 +132,11 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	{ "tpope/vim-sleuth" }, -- Detect tabstop and shiftwidth automatically
+	{ "tpope/vim-sleuth" },
 	{ "github/copilot.vim" },
 	{ "numToStr/Comment.nvim", opts = {} },
-	-- See `:help gitsigns` to understand what the configuration keys do
-	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
-		"lewis6991/gitsigns.nvim",
-		opts = {
-			signs = {
-				add = { text = "+" },
-				change = { text = "~" },
-				delete = { text = "_" },
-				topdelete = { text = "‾" },
-				changedelete = { text = "~" },
-			},
-		},
-	},
+	{ "stevearc/oil.nvim", lazy = false },
+	{ "lewis6991/gitsigns.nvim" },
 
 	-- NOTE: Plugins can also be configured to run Lua code when they are loaded.
 	--
@@ -295,20 +284,14 @@ require("lazy").setup({
 		end,
 	},
 
-	{ -- LSP Configuration & Plugins
+	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			-- Automatically install LSPs and related tools to stdpath for Neovim
-			{ "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
+			{ "williamboman/mason.nvim", config = true },
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 
-			-- Useful status updates for LSP.
-			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
 			{ "j-hui/fidget.nvim", opts = {} },
-
-			-- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
-			-- used for completion, annotations and signatures of Neovim apis
 			{ "folke/lazydev.nvim", opts = {} },
 		},
 		config = function()
@@ -809,6 +792,5 @@ require("lazy").setup({
 
 require("core.keymaps")
 require("plugins.gh-copilot")
-
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+require("plugins.oil")
+require("plugins.gitsigns")
