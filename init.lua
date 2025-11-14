@@ -117,6 +117,7 @@ require("lazy").setup({
 
 require("core.keymaps")
 require("core.options")
+require("core.filetypes")
 require("plugins.telescope")
 require("plugins.whichkey")
 require("plugins.copilot")
