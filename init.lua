@@ -17,6 +17,7 @@ require("lazy").setup({
 	{ "numToStr/Comment.nvim" },
 	{ "stevearc/oil.nvim", lazy = false },
 	{ "lewis6991/gitsigns.nvim" },
+	{ "mfussenegger/nvim-lint" },
 	{ "windwp/nvim-autopairs", event = "InsertEnter", config = true },
 	{ "folke/which-key.nvim" },
 	{
